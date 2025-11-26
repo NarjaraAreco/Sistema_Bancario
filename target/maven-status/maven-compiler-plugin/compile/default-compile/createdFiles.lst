@@ -2,7 +2,10 @@ visao\ExtratoVisao$3.class
 visao\TransferenciaVisao$2.class
 visao\menus\MenuCadastro$5.class
 VO\TransacaoVO.class
+visao\menus\LoginVisao.class
 visao\ExtratoVisao.class
+visao\menus\CadastroVisao.class
+visao\menus\LoginVisao$1.class
 visao\menus\MenuCadastro$2.class
 visao\menus\MenuCadastro$9.class
 visao\DepositoVisao$2.class
@@ -23,7 +26,9 @@ visao\menus\MenuInicial.class
 visao\ExtratoVisao$4.class
 visao\menus\MenuCadastro$11.class
 visao\DepositoVisao$1.class
+visao\menus\LoginVisao$2.class
 visao\SaqueVisao$3.class
+visao\menus\LoginVisao$3.class
 visao\menus\MenuInicial$1.class
 visao\menus\MenuCadastro$7.class
 visao\TelaPrincipalVisao$3.class
@@ -33,6 +38,7 @@ visao\menus\MenuCadastro$11$1.class
 regraNegocio\ContaRN.class
 visao\menus\FormTemplateMenus.class
 visao\menus\MenuCadastro$4.class
+visao\menus\CadastroVisao$1.class
 persistencia\ContaPers.class
 visao\SaqueVisao$2.class
 visao\ExtratoVisao$1$1.class
@@ -45,6 +51,7 @@ visao\menus\MenuCadastro$10.class
 VO\CepVO.class
 visao\SaqueVisao$1.class
 visao\TelaPrincipalVisao$1.class
+visao\menus\CadastroVisao$2.class
 visao\menus\MenuCadastro$3.class
 visao\menus\MenuCadastro.class
 visao\menus\MenuLogin$1.class
