@@ -31,6 +31,7 @@ visao\menus\CadastroVisao$8.class
 visao\menus\CadastroVisao$1.class
 persistencia\ContaPers.class
 visao\SaqueVisao$2.class
+visao\InicioLoginVisao$2.class
 visao\ExtratoVisao$1$1.class
 visao\menus\CadastroVisao$8$1.class
 visao\ExtratoVisao$2.class
@@ -38,9 +39,11 @@ visao\TelaPrincipalVisao$4.class
 visao\TransferenciaVisao$3.class
 VO\ContaVO.class
 visao\menus\CadastroVisao$6.class
+visao\InicioLoginVisao$1.class
 VO\CepVO.class
 visao\SaqueVisao$1.class
 visao\TelaPrincipalVisao$1.class
 visao\menus\CadastroVisao$2.class
 regraNegocio\OperacoesRN.class
 visao\DepositoVisao.class
+visao\InicioLoginVisao.class

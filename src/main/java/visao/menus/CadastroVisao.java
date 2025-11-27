@@ -40,7 +40,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         
         painelCentral.setOpaque(false);
         painelCentral.putClientProperty("FlatLaf.style", 
-              "background: rgba(255, 255, 255, 150); " + 
+              "background: rgba(255, 255, 255, 50); " + 
             "arc: 30; " +
             "border: null"
         ); 
@@ -48,8 +48,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         painelDados.putClientProperty("FlatLaf.style", 
               "background: rgba(255, 255, 255, 150); " + 
             "arc: 30; " +
-            "border: null" +
-            "setSize(1000, 800)"
+            "border: null"
         );
         painelEndereco.setOpaque(false);
         painelEndereco.putClientProperty("FlatLaf.style", 
@@ -140,7 +139,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         painelCentral.setLayout(new java.awt.CardLayout());
 
         painelDados.setBackground(new java.awt.Color(255, 255, 255));
-        painelDados.setPreferredSize(new java.awt.Dimension(500, 400));
+        painelDados.setPreferredSize(new java.awt.Dimension(350, 400));
 
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(9, 102, 102));
@@ -550,7 +549,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         painelBotoes.add(btAvancar);
 
         btCadastro.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
-        btCadastro.setText("CADASTRO");
+        btCadastro.setText("FINALIZAR");
         btCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroActionPerformed(evt);

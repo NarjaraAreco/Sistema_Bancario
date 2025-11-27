@@ -7,6 +7,7 @@ package visao.menus;
 import VO.ContaVO;
 import javax.swing.JOptionPane;
 import regraNegocio.ContaRN;
+import visao.InicioLoginVisao;
 import visao.TelaPrincipalVisao;
 
 /**
@@ -26,7 +27,7 @@ public class LoginVisao extends javax.swing.JFrame {
     
     
     private void propriedades(){
-       this.setSize(1000, 800);
+        this.setSize(1000, 800);
         this.setLocationRelativeTo(null);
         btLogin.putClientProperty("FlatLaf.style", "shadowWidth: 4; shadowColor: #00000040");
         pfSenha.putClientProperty("JPasswordField.showRevealButton", true);
@@ -199,7 +200,8 @@ public class LoginVisao extends javax.swing.JFrame {
             conta = contaRN.autenticarRN(cpf, senha);
             if (conta != null) {
                 JOptionPane.showMessageDialog(null, "LOGIN REALIZADO COM SUCESSO!", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
-                TelaPrincipalVisao logado = new TelaPrincipalVisao(conta);                               
+                //TelaPrincipalVisao logado = new TelaPrincipalVisao(conta);      
+                InicioLoginVisao logado = new InicioLoginVisao(conta);  
                 dispose();
                 logado.setVisible(true);
             } else {
