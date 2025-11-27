@@ -19,6 +19,7 @@ visao\TelaPrincipalVisao.class
 visao\menus\CadastroVisao$7.class
 visao\ExtratoVisao$4.class
 visao\DepositoVisao$1.class
+visao\InicioLoginVisao$3.class
 visao\menus\LoginVisao$2.class
 visao\SaqueVisao$3.class
 visao\menus\LoginVisao$3.class
