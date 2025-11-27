@@ -25,8 +25,8 @@ public class LoginVisao extends javax.swing.JFrame {
 
     
     
-    public void propriedades(){
-       this.setSize(900, 600);
+    private void propriedades(){
+       this.setSize(1000, 800);
         this.setLocationRelativeTo(null);
         btLogin.putClientProperty("FlatLaf.style", "shadowWidth: 4; shadowColor: #00000040");
         pfSenha.putClientProperty("JPasswordField.showRevealButton", true);
@@ -183,7 +183,7 @@ public class LoginVisao extends javax.swing.JFrame {
         int confirm;
         confirm = JOptionPane.showConfirmDialog(null, "Deseja continuar para o cadastro?", "Tela cadastro", JOptionPane.OK_CANCEL_OPTION);
         if (confirm == 0){
-            MenuCadastro cadastro = new MenuCadastro();
+            CadastroVisao cadastro = new CadastroVisao();
             dispose();
             cadastro.setVisible(true);
         }
@@ -233,13 +233,13 @@ public class LoginVisao extends javax.swing.JFrame {
         com.formdev.flatlaf.FlatIntelliJLaf.setup(); // Ou FlatDarkLaf.setup();
         
         } catch (NumberFormatException ex) {
-            java.util.logging.Logger.getLogger(MenuLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginVisao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new CadastroVisao().setVisible(true);
+                new LoginVisao().setVisible(true);
             }
         });
     }

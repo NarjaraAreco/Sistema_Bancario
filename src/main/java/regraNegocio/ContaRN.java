@@ -74,44 +74,50 @@ public class ContaRN{
         }
     }
 
-    public boolean validarDadosCadastro(ContaVO conta){
-        if ((conta.getTitular() == null || conta.getTitular().trim().isEmpty()) || 
-        (conta.getEmail() == null || conta.getEmail().trim().isEmpty()) || 
-        (conta.getRua() == null || conta.getRua().trim().isEmpty()) || 
-        (conta.getBairro() == null || conta.getBairro().trim().isEmpty()) || 
-        (conta.getNumeroCasa() == null || conta.getNumeroCasa().trim().isEmpty()) || 
-        (conta.getCidade() == null || conta.getCidade().trim().isEmpty())) {
-        return false;
-    }
+    public String validarDadosCadastro(ContaVO conta, int opc) throws SQLException{
+        ContaPers contaExiste = new ContaPers();
+        if (opc == 1){
+            if ((conta.getTitular() == null || conta.getTitular().trim().isEmpty()) || 
+                (conta.getEmail() == null || conta.getEmail().trim().isEmpty()) ||
+                (conta.getCpf() == null || conta.getCpf().trim().isEmpty()) ||
+                (conta.getTipoConta() == null || conta.getTipoConta().trim().isEmpty())){
+                    return "Por favor, preencha todos os campos!";}
 
-    if ((conta.getCpf() == null || conta.getCpf().trim().isEmpty()) || 
-        (conta.getCep() == null || conta.getCep().trim().isEmpty())) {
-        return false;
-    }
+            if (contaExiste.existeCPF(conta.getCpf())) {
+                    return "CPF Já utilizado!";}
+            
+            return null;
+        }
+        
+        if (opc == 2){
+            if ((conta.getRua() == null || conta.getRua().trim().isEmpty()) || 
+                (conta.getBairro() == null || conta.getBairro().trim().isEmpty()) || 
+                (conta.getNumeroCasa() == null || conta.getNumeroCasa().trim().isEmpty()) || 
+                (conta.getCidade() == null || conta.getCidade().trim().isEmpty()) ||
+                (conta.getEstado() == null || conta.getEstado().trim().isEmpty() || conta.getEstado().equals("Escolha...")) ||
+                (conta.getCep() == null || conta.getCep().trim().isEmpty())){
+                return "Por favor, preencha todos os campos!";} 
+            
+            return null;
+        }
+        
 
     if (conta.getSenha() == null || conta.getSenha().trim().isEmpty()) {
-        return false;
+        return null;
     }
 
-    if (conta.getEstado() == null || 
-        conta.getEstado().trim().isEmpty() || 
-        conta.getEstado().equals("Escolha...")) {
-        return false;
-    }
-    return !(conta.getTipoConta() == null || conta.getTipoConta().trim().isEmpty());
+//    return !(conta.getTipoConta() == null || conta.getTipoConta().trim().isEmpty());
+        return null;
     }
     
     public ContaVO cadastrar(ContaVO conta) throws SQLException{
-        ContaPers contaExiste = new ContaPers();
-        if (contaExiste.existeCPF(conta.getCpf())) {
-            return null; 
-        }
-        
+        ContaPers novaConta = new ContaPers();
+     
         Random gerador = new Random();
         int numero = 100000 + gerador.nextInt(900000); 
         conta.setNumeroConta(numero + "-" + gerador.nextInt(9));
         
-        boolean contaOK = contaExiste.cadastrarConta(conta);
+        boolean contaOK = novaConta.cadastrarConta(conta);
         if (contaOK) {
             OperacoesPers oper = new OperacoesPers();
             TransacaoVO abertura = new TransacaoVO("ABERTURA", conta.getSaldo(), "Saldo Inicial");

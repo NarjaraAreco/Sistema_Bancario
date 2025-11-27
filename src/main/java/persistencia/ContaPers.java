@@ -111,7 +111,7 @@ public class ContaPers {
                 conta.setCidade(rs.getString("cidade"));
                 conta.setEstado(rs.getString("estado"));
                 conta.setCidade(rs.getString("cidade"));
-                conta.setEstado(rs.getString("estado"));
+                conta.setBairro(rs.getString("bairro"));
              }
              bd.close();
              return conta;
@@ -138,8 +138,8 @@ public class ContaPers {
     public boolean cadastrarConta(ContaVO conta) throws SQLException{
         try (Connection bd = DriverManager.getConnection("jdbc:mysql://localhost:3306/sistemabancario_projeto", "root", "")) {     
             String sqlConta = "INSERT INTO contas (titular, cpf, email, numero_conta, tipo_conta, " 
-                    + "cep, rua, numero, complemento, cidade, estado, senha, saldo) " 
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "cep, rua, bairro, numero, complemento, cidade, estado, senha, saldo) " 
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
             PreparedStatement stmt = bd.prepareStatement(sqlConta, java.sql.Statement.RETURN_GENERATED_KEYS);
             
@@ -150,12 +150,13 @@ public class ContaPers {
             stmt.setString(5, conta.getTipoConta());
             stmt.setString(6, conta.getCep());
             stmt.setString(7, conta.getRua());
-            stmt.setString(8, conta.getNumeroCasa());
-            stmt.setString(9, conta.getComplemento());
-            stmt.setString(10, conta.getCidade());
-            stmt.setString(11, conta.getEstado());
-            stmt.setString(12, conta.getSenha());
-            stmt.setDouble(13, conta.getSaldo());
+            stmt.setString(8, conta.getBairro()); 
+            stmt.setString(9, conta.getNumeroCasa());
+            stmt.setString(10, conta.getComplemento()); 
+            stmt.setString(11, conta.getCidade()); 
+            stmt.setString(12, conta.getEstado()); 
+            stmt.setString(13, conta.getSenha());
+            stmt.setDouble(14, conta.getSaldo());
 
             stmt.executeUpdate();
             ResultSet rsId = stmt.getGeneratedKeys();
