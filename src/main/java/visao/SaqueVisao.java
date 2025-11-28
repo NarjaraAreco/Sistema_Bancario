@@ -47,8 +47,8 @@ public final class SaqueVisao extends javax.swing.JFrame {
         btVoltar.putClientProperty("JPasswordField.showRevealButton", true);
         
         painelCentral.putClientProperty("FlatLaf.style", 
-            "arc: 30; " +
-            "border: null"
+            "arc: 30; " 
+            //"border: null"
         ); 
     }
     @SuppressWarnings("unchecked")
@@ -68,6 +68,7 @@ public final class SaqueVisao extends javax.swing.JFrame {
         setUndecorated(true);
 
         painelCentral.setBackground(new java.awt.Color(9, 102, 102));
+        painelCentral.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         painelCentral.setPreferredSize(new java.awt.Dimension(400, 300));
 
         lbUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,7 +136,7 @@ public final class SaqueVisao extends javax.swing.JFrame {
                         .addGap(112, 112, 112)
                         .addComponent(btVoltar))
                     .addComponent(ftValorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         painelCentralLayout.setVerticalGroup(
             painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +153,7 @@ public final class SaqueVisao extends javax.swing.JFrame {
                 .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
                     .addComponent(btSacar))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         getContentPane().add(painelCentral, java.awt.BorderLayout.CENTER);
