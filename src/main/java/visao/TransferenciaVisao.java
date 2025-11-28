@@ -8,7 +8,6 @@ import VO.ContaVO;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import regraNegocio.OperacoesRN;
-import visao.TelaPrincipalVisao;
 
 /**
  *
@@ -50,11 +49,6 @@ public class TransferenciaVisao extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftConta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftContaActionPerformed(evt);
-            }
-        });
 
         ftValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
@@ -117,10 +111,10 @@ public class TransferenciaVisao extends javax.swing.JFrame {
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         try {
-        TelaPrincipalVisao inicio = new TelaPrincipalVisao(this.conta);
-        
-        dispose();
-        inicio.setVisible(true);
+            InicioLoginVisao inicio = new InicioLoginVisao(this.conta);
+
+            dispose();
+            inicio.setVisible(true);
         
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, 
@@ -129,18 +123,16 @@ public class TransferenciaVisao extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_btVoltarActionPerformed
 
-    private void ftContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftContaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftContaActionPerformed
-
     private void btTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTransferirActionPerformed
         String contaDestino = ftConta.getText();
         String valorTransferido = ftValor.getText();
     
         OperacoesRN oper = new OperacoesRN();       
         String resultado;
-        
-        int confirm = JOptionPane.showConfirmDialog(null, "Será cobrada uma taxa de R$2,60. Deseja mesmo transferir " + valorTransferido + "?", "CONFIRMAÇÃO", JOptionPane.YES_NO_OPTION);
+        int confirm = 0;
+        if ("CORRENTE".equals(conta.getTipoConta())) {
+            confirm = JOptionPane.showConfirmDialog(null, "Será cobrada uma taxa de R$2,60. Deseja mesmo transferir " + valorTransferido + "?", "CONFIRMAÇÃO", JOptionPane.YES_NO_OPTION);
+        }
         if (confirm == 0) {
             try {
                 resultado = oper.transferencia(this.conta, contaDestino, valorTransferido);      

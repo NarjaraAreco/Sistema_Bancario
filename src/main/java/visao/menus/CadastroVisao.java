@@ -77,7 +77,7 @@ public class CadastroVisao extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        grid = new javax.swing.JPanel();
         painelCentral = new javax.swing.JPanel();
         painelDados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -130,10 +130,11 @@ public class CadastroVisao extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(9, 102, 102));
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 500));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        grid.setBackground(new java.awt.Color(9, 102, 102));
+        grid.setPreferredSize(new java.awt.Dimension(500, 500));
+        grid.setLayout(new java.awt.GridBagLayout());
 
         painelCentral.setPreferredSize(new java.awt.Dimension(500, 600));
         painelCentral.setLayout(new java.awt.CardLayout());
@@ -150,13 +151,14 @@ public class CadastroVisao extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(9, 102, 102));
         jSeparator1.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setText("TITULAR * :");
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        tfTitular.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfTitular.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setText("CPF * :");
         jLabel3.setPreferredSize(new java.awt.Dimension(200, 40));
 
@@ -167,30 +169,31 @@ public class CadastroVisao extends javax.swing.JFrame {
         }
         ftCPF.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setText("EMAIL * :");
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        tfEmail.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfEmail.setPreferredSize(new java.awt.Dimension(200, 40));
 
         jSeparator2.setForeground(new java.awt.Color(9, 102, 102));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setText("CONTA * :");
         jLabel8.setPreferredSize(new java.awt.Dimension(200, 40));
 
         buttonGroup1.add(rbCorrente);
-        rbCorrente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbCorrente.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         rbCorrente.setText("CORRENTE");
 
         buttonGroup1.add(rbPoupanca);
-        rbPoupanca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rbPoupanca.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         rbPoupanca.setText("POUPANÇA");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel14.setText("Já tem conta?");
 
-        btLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btLogin.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btLogin.setForeground(new java.awt.Color(51, 0, 255));
         btLogin.setText("Faça login.");
         btLogin.setContentAreaFilled(false);
@@ -230,9 +233,9 @@ public class CadastroVisao extends javax.swing.JFrame {
                                 .addComponent(ftCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(tfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(painelDadosLayout.createSequentialGroup()
-                                    .addGap(29, 29, 29)
+                                    .addGap(50, 50, 50)
                                     .addComponent(jLabel14)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btLogin)
                                     .addGap(0, 0, Short.MAX_VALUE))))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
@@ -245,26 +248,26 @@ public class CadastroVisao extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(80, 80, 80)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(80, 80, 80)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ftCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(80, 80, 80)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(50, 50, 50)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbCorrente)
                     .addComponent(rbPoupanca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(painelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(btLogin))
@@ -276,7 +279,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         painelEndereco.setBackground(new java.awt.Color(255, 255, 255));
         painelEndereco.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        lbCEP.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbCEP.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lbCEP.setText("CEP * :");
         lbCEP.setPreferredSize(new java.awt.Dimension(200, 40));
 
@@ -284,8 +287,6 @@ public class CadastroVisao extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(9, 102, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("CADASTRO");
-        jLabel7.setMaximumSize(new java.awt.Dimension(181, 42));
-        jLabel7.setMinimumSize(new java.awt.Dimension(181, 42));
         jLabel7.setPreferredSize(new java.awt.Dimension(500, 45));
 
         try {
@@ -303,11 +304,11 @@ public class CadastroVisao extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(9, 102, 102));
         jSeparator3.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setText("UF :");
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        cbUF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbUF.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha...", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbUF.setPreferredSize(new java.awt.Dimension(200, 40));
         cbUF.addActionListener(new java.awt.event.ActionListener() {
@@ -316,36 +317,40 @@ public class CadastroVisao extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setText("CIDADE:");
         jLabel9.setPreferredSize(new java.awt.Dimension(200, 40));
         jLabel9.setRequestFocusEnabled(false);
 
+        tfCidade.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfCidade.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel10.setText("RUA:");
         jLabel10.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        tfRua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfRua.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfRua.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel11.setText("BAIRRO:");
         jLabel11.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        tfBairro.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfBairro.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel12.setText("NÚMERO*:");
         jLabel12.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        tfNumero.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfNumero.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel13.setText("COMPLEMENTO:");
         jLabel13.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        tfComplemento.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tfComplemento.setPreferredSize(new java.awt.Dimension(200, 40));
 
         javax.swing.GroupLayout painelEnderecoLayout = new javax.swing.GroupLayout(painelEndereco);
@@ -429,7 +434,7 @@ public class CadastroVisao extends javax.swing.JFrame {
                 .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(pbCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -447,20 +452,22 @@ public class CadastroVisao extends javax.swing.JFrame {
         jSeparator4.setForeground(new java.awt.Color(9, 102, 102));
         jSeparator4.setPreferredSize(new java.awt.Dimension(400, 20));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel16.setText("SALDO INICIAL:");
         jLabel16.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel17.setText("SENHA:");
         jLabel17.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel18.setText("CONFIRME SUA SENHA:");
         jLabel18.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        pfSenha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         pfSenha.setPreferredSize(new java.awt.Dimension(200, 40));
 
+        pfConfirmSenha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         pfConfirmSenha.setPreferredSize(new java.awt.Dimension(200, 40));
         pfConfirmSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -470,6 +477,16 @@ public class CadastroVisao extends javax.swing.JFrame {
 
         ftSaldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         ftSaldo.setPreferredSize(new java.awt.Dimension(200, 40));
+        ftSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftSaldoActionPerformed(evt);
+            }
+        });
+        ftSaldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftSaldoKeyTyped(evt);
+            }
+        });
 
         lbStatusSenhas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbStatusSenhas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -478,9 +495,9 @@ public class CadastroVisao extends javax.swing.JFrame {
         painelSenha.setLayout(painelSenhaLayout);
         painelSenhaLayout.setHorizontalGroup(
             painelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSenhaLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSenhaLayout.createSequentialGroup()
@@ -505,32 +522,32 @@ public class CadastroVisao extends javax.swing.JFrame {
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(80, 80, 80)
                 .addGroup(painelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(80, 80, 80)
                 .addGroup(painelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(80, 80, 80)
                 .addGroup(painelSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pfConfirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(80, 80, 80)
                 .addComponent(lbStatusSenhas)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addGap(0, 150, Short.MAX_VALUE))
         );
 
         painelCentral.add(painelSenha, "cardSenha");
 
-        jPanel1.add(painelCentral, new java.awt.GridBagConstraints());
+        grid.add(painelCentral, new java.awt.GridBagConstraints());
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(grid, java.awt.BorderLayout.CENTER);
 
         painelBotoes.setBackground(new java.awt.Color(9, 102, 102));
 
-        btVoltar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        btVoltar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btVoltar.setText("ANTERIOR");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -539,7 +556,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         });
         painelBotoes.add(btVoltar);
 
-        btAvancar.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        btAvancar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btAvancar.setText("AVANÇAR");
         btAvancar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -548,7 +565,7 @@ public class CadastroVisao extends javax.swing.JFrame {
         });
         painelBotoes.add(btAvancar);
 
-        btCadastro.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 14)); // NOI18N
+        btCadastro.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         btCadastro.setText("FINALIZAR");
         btCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -730,6 +747,20 @@ public class CadastroVisao extends javax.swing.JFrame {
         }
                 
     }//GEN-LAST:event_btCadastroActionPerformed
+
+    private void ftSaldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftSaldoKeyTyped
+        char letra = evt.getKeyChar();
+        
+        if (!Character.isDigit(letra)) {
+            evt.consume();
+        // Opcional: Faz um 'beep' para avisar o usuário que ele fez algo errado
+            java.awt.Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_ftSaldoKeyTyped
+
+    private void ftSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftSaldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftSaldoActionPerformed
                   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAvancar;
@@ -741,6 +772,7 @@ public class CadastroVisao extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftCEP;
     private javax.swing.JFormattedTextField ftCPF;
     private javax.swing.JFormattedTextField ftSaldo;
+    private javax.swing.JPanel grid;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -759,7 +791,6 @@ public class CadastroVisao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

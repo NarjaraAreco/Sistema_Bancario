@@ -39,31 +39,47 @@ public class ExtratoVisao extends javax.swing.JFrame {
     }
  
     private void localExtrato() throws IOException {
-        try {
-            fcEscolherPasta.setDialogTitle("Salvar Extrato Bancário");
-            //somente txt
-            fcEscolherPasta.setFileFilter(new FileNameExtensionFilter("Arquivo de Texto (.txt)", "txt"));
-            //sugestao do nome do arquivo
-            String nomeSugestao = "extrato_" + conta.getNumeroConta() + ".txt";
-            fcEscolherPasta.setSelectedFile(new File(nomeSugestao));
 
-            int resultado = fcEscolherPasta.showSaveDialog(this);
-
-            if (resultado == JFileChooser.APPROVE_OPTION) {
-
-                File arquivoEscolhido = fcEscolherPasta.getSelectedFile();
-
-                if (!arquivoEscolhido.getName().endsWith(".txt")) {
-                    arquivoEscolhido = new File(arquivoEscolhido.getAbsolutePath() + ".txt");
-
-                }
-                OperacoesRN rn = new OperacoesRN();
-                rn.exportarExtrato(this.conta, arquivoEscolhido);
-                JOptionPane.showMessageDialog(null, "EXTRATO SALVO COM SUCESSO!", "EXTRATO", JOptionPane.INFORMATION_MESSAGE);
+        fcEscolherPasta.setDialogTitle("Salvar Extrato Bancário");
+        //somente txt
+        fcEscolherPasta.setFileFilter(new FileNameExtensionFilter("Arquivo de Texto (.txt)", "txt"));
+        //sugestao do nome do arquivo
+        String nomeSugestao = "extrato_" + conta.getNumeroConta() + ".txt";
+        fcEscolherPasta.setSelectedFile(new File(nomeSugestao));
+        int resultado = fcEscolherPasta.showSaveDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            
+            File arquivoEscolhido = fcEscolherPasta.getSelectedFile();
+            
+            if (!arquivoEscolhido.getName().endsWith(".txt")) {
+                arquivoEscolhido = new File(arquivoEscolhido.getAbsolutePath() + ".txt");
+                
             }
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(null, "ERRO: " + ex.getMessage() , "Erro", JOptionPane.ERROR_MESSAGE);
+            
+            final File arquivoFinal = arquivoEscolhido;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        // A LÓGICA DE SALVAR O ARQUIVO EM SEGUNDO PLANO
+                        OperacoesRN rn = new OperacoesRN();
+                        rn.exportarExtrato(conta, arquivoFinal);
+                        
+                        // AVISO DE SUCESSO DEVE VOLTAR PARA A THREAD PRINCIPAL (invokeLater)
+                        javax.swing.SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(null, "EXTRATO SALVO COM SUCESSO!", "EXTRATO", JOptionPane.INFORMATION_MESSAGE);
+                        });
+                        
+                    } catch (IOException ex) {
+                        // Tratar erro no disco ou na escrita, voltando para a tela
+                        javax.swing.SwingUtilities.invokeLater(() -> {
+                            JOptionPane.showMessageDialog(null, "ERRO ao salvar arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                        });
+                    }
+                }
+            }).start();
         } 
+
     }
     
     private void preencherDados() {
@@ -226,11 +242,10 @@ public class ExtratoVisao extends javax.swing.JFrame {
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         try {
-        TelaPrincipalVisao inicio = new TelaPrincipalVisao(this.conta);
-        
-        dispose();
-        inicio.setVisible(true);
-        
+            InicioLoginVisao inicio = new InicioLoginVisao(this.conta);
+
+            dispose();
+            inicio.setVisible(true);
         } catch (Exception ex) {
             // C. Se deu erro (falha no banco, por exemplo), avisa o usuário.
             JOptionPane.showMessageDialog(this, 
