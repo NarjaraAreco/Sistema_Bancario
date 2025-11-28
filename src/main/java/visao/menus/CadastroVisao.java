@@ -434,7 +434,7 @@ public class CadastroVisao extends javax.swing.JFrame {
                 .addGroup(painelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pbCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -477,11 +477,6 @@ public class CadastroVisao extends javax.swing.JFrame {
 
         ftSaldo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         ftSaldo.setPreferredSize(new java.awt.Dimension(200, 40));
-        ftSaldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftSaldoActionPerformed(evt);
-            }
-        });
         ftSaldo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ftSaldoKeyTyped(evt);
@@ -753,14 +748,9 @@ public class CadastroVisao extends javax.swing.JFrame {
         
         if (!Character.isDigit(letra)) {
             evt.consume();
-        // Opcional: Faz um 'beep' para avisar o usuário que ele fez algo errado
             java.awt.Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_ftSaldoKeyTyped
-
-    private void ftSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftSaldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftSaldoActionPerformed
                   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAvancar;

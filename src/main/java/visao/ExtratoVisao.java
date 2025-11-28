@@ -36,6 +36,20 @@ public class ExtratoVisao extends javax.swing.JFrame {
         
         this.conta = contaRecebida;
         preencherDados();
+        propriedades();
+    }
+    
+    private void propriedades(){
+        this.setSize(700, 500);
+        this.setLocationRelativeTo(null);
+        btExportar.putClientProperty("FlatLaf.style", "shadowWidth: 4; shadowColor: #00000040");
+        btVoltar.putClientProperty("JPasswordField.showRevealButton", true);
+        
+        
+        painelCentral.putClientProperty("FlatLaf.style", 
+            "arc: 30; " +
+            "border: null"
+        ); 
     }
  
     private void localExtrato() throws IOException {
@@ -60,18 +74,15 @@ public class ExtratoVisao extends javax.swing.JFrame {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        // A LÓGICA DE SALVAR O ARQUIVO EM SEGUNDO PLANO
+                    try {                     
                         OperacoesRN rn = new OperacoesRN();
                         rn.exportarExtrato(conta, arquivoFinal);
                         
-                        // AVISO DE SUCESSO DEVE VOLTAR PARA A THREAD PRINCIPAL (invokeLater)
-                        javax.swing.SwingUtilities.invokeLater(() -> {
+                        javax.swing.SwingUtilities.invokeLater(() -> {//AGUARDA O INVOKE
                             JOptionPane.showMessageDialog(null, "EXTRATO SALVO COM SUCESSO!", "EXTRATO", JOptionPane.INFORMATION_MESSAGE);
                         });
                         
                     } catch (IOException ex) {
-                        // Tratar erro no disco ou na escrita, voltando para a tela
                         javax.swing.SwingUtilities.invokeLater(() -> {
                             JOptionPane.showMessageDialog(null, "ERRO ao salvar arquivo: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
                         });
@@ -87,10 +98,10 @@ public class ExtratoVisao extends javax.swing.JFrame {
     NumberFormat formatador = NumberFormat.getCurrencyInstance(brasil);
     DefaultTableModel modelo = (DefaultTableModel) tbExtrato.getModel();
     modelo.setNumRows(0); 
-    
+    pbProgresso.setIndeterminate(true);
     Double valor = conta.getSaldo();
-    lbUsuario.setText("Usuario: " + this.conta.getTitular());
-    lbSaldo.setText("Saldo: " + formatador.format(valor));
+    lbUsuario.setText("Olá, " + conta.getTitular());        
+        lbSaldo.setText("Saldo atual: " + formatador.format(valor));
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -113,9 +124,9 @@ public class ExtratoVisao extends javax.swing.JFrame {
                                         formatador.format(valor),
                                         t.getDataHora(),
                                         t.getDetalhes()
-                                    });
+                                    }); pbProgresso.setIndeterminate(false);
                                 }
-                            } pbProgresso.setVisible(false);
+                            }
                         }
                     });
                 } catch (InterruptedException ex){
@@ -131,7 +142,7 @@ public class ExtratoVisao extends javax.swing.JFrame {
     private void initComponents() {
 
         fcEscolherPasta = new javax.swing.JFileChooser();
-        jPanel1 = new javax.swing.JPanel();
+        painelCentral = new javax.swing.JPanel();
         btVoltar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbExtrato = new javax.swing.JTable();
@@ -142,14 +153,19 @@ public class ExtratoVisao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("EXTRATO BANCÁRIO");
+        setUndecorated(true);
 
-        btVoltar.setText("Voltar");
+        painelCentral.setBackground(new java.awt.Color(9, 102, 102));
+
+        btVoltar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btVoltar.setText("VOLTAR");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVoltarActionPerformed(evt);
             }
         });
 
+        tbExtrato.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         tbExtrato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -175,66 +191,63 @@ public class ExtratoVisao extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbExtrato);
 
-        lbUsuario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        lbUsuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUsuario.setText("Usuário: ");
+        lbUsuario.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        lbSaldo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        lbSaldo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        lbSaldo.setForeground(new java.awt.Color(255, 255, 255));
         lbSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbSaldo.setText("Saldo:");
+        lbSaldo.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        pbProgresso.setIndeterminate(true);
-
-        btExportar.setText("Exportar");
+        btExportar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btExportar.setText("EXPORTAR");
         btExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExportarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(107, 107, 107)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(btVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        javax.swing.GroupLayout painelCentralLayout = new javax.swing.GroupLayout(painelCentral);
+        painelCentral.setLayout(painelCentralLayout);
+        painelCentralLayout.setHorizontalGroup(
+            painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCentralLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(painelCentralLayout.createSequentialGroup()
                         .addComponent(btExportar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pbProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addComponent(btVoltar)
+                        .addGap(28, 28, 28)
+                        .addComponent(pbProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbSaldo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lbUsuario)
+        painelCentralLayout.setVerticalGroup(
+            painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCentralLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btVoltar)
                         .addComponent(btExportar))
                     .addComponent(pbProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelCentral, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -267,10 +280,10 @@ public class ExtratoVisao extends javax.swing.JFrame {
     private javax.swing.JButton btExportar;
     private javax.swing.JButton btVoltar;
     private javax.swing.JFileChooser fcEscolherPasta;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbSaldo;
     private javax.swing.JLabel lbUsuario;
+    private javax.swing.JPanel painelCentral;
     private javax.swing.JProgressBar pbProgresso;
     private javax.swing.JTable tbExtrato;
     // End of variables declaration//GEN-END:variables

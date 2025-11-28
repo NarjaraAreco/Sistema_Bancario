@@ -6,6 +6,8 @@ package visao;
 
 import VO.ContaVO;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import regraNegocio.OperacoesRN;
 
@@ -22,88 +24,154 @@ public class TransferenciaVisao extends javax.swing.JFrame {
         initComponents();
         
         this.conta = contaRecebida;
+        propriedades();
+        preencherDados();
+    }
+    
+    private void preencherDados(){
+        
+        Double valor = conta.getSaldo();
+        Locale brasil = new Locale("pt", "BR");
+        NumberFormat formatador = NumberFormat.getCurrencyInstance(brasil);
+            
+        lbUsuario.setText("Olá, " + conta.getTitular());        
+        lbSaldo.setText("Saldo atual: " + formatador.format(valor));
+        
+    }
+    
+    private void propriedades(){
+        this.setSize(400, 400);
+        this.setLocationRelativeTo(null);
+        btTransferir.putClientProperty("FlatLaf.style", "shadowWidth: 4; shadowColor: #00000040");
+        btVoltar.putClientProperty("JPasswordField.showRevealButton", true);
+        
+        
+        painelCentral.putClientProperty("FlatLaf.style", 
+            "arc: 30; " +
+            "border: null"
+        ); 
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        painelCentral = new javax.swing.JPanel();
         ftConta = new javax.swing.JFormattedTextField();
         ftValor = new javax.swing.JFormattedTextField();
         btVoltar = new javax.swing.JButton();
         btTransferir = new javax.swing.JButton();
+        lbUsuario = new javax.swing.JLabel();
+        lbSaldo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel1.setText("Qual conta deseja transferir? ");
-
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel2.setText("Valor a ser transferido?");
+        painelCentral.setBackground(new java.awt.Color(9, 102, 102));
 
         try {
             ftConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftConta.setPreferredSize(new java.awt.Dimension(200, 40));
 
         ftValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        ftValor.setPreferredSize(new java.awt.Dimension(200, 40));
+        ftValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftValorKeyTyped(evt);
+            }
+        });
 
-        btVoltar.setText("Voltar");
+        btVoltar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btVoltar.setText("VOLTAR");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVoltarActionPerformed(evt);
             }
         });
 
-        btTransferir.setText("Transferir");
+        btTransferir.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btTransferir.setText("TRANSFERIR");
         btTransferir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btTransferirActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                    .addComponent(ftConta)
-                    .addComponent(ftValor, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addComponent(btTransferir)
-                .addGap(52, 52, 52)
-                .addComponent(btVoltar)
-                .addGap(105, 105, 105))
+        lbUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        lbUsuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lbUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUsuario.setText("Olá, usuario");
+        lbUsuario.setPreferredSize(new java.awt.Dimension(200, 40));
+
+        lbSaldo.setBackground(new java.awt.Color(255, 255, 255));
+        lbSaldo.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        lbSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        lbSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSaldo.setText("Saldo atual:");
+        lbSaldo.setPreferredSize(new java.awt.Dimension(200, 40));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("INFORME O VALOR DA TRANSFERENCIA:");
+        jLabel4.setPreferredSize(new java.awt.Dimension(200, 40));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("INFORME A CONTA DESTINO:");
+        jLabel5.setPreferredSize(new java.awt.Dimension(200, 40));
+
+        javax.swing.GroupLayout painelCentralLayout = new javax.swing.GroupLayout(painelCentral);
+        painelCentral.setLayout(painelCentralLayout);
+        painelCentralLayout.setHorizontalGroup(
+            painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCentralLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCentralLayout.createSequentialGroup()
+                        .addComponent(btTransferir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btVoltar))
+                    .addComponent(ftValor, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                    .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ftConta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+        painelCentralLayout.setVerticalGroup(
+            painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCentralLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btVoltar)
-                    .addComponent(btTransferir))
-                .addGap(18, 18, 18))
+                .addGap(49, 49, 49)
+                .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btTransferir)
+                    .addComponent(btVoltar))
+                .addGap(44, 44, 44))
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(painelCentral, java.awt.BorderLayout.PAGE_END);
 
         pack();
         setLocationRelativeTo(null);
@@ -152,14 +220,25 @@ public class TransferenciaVisao extends javax.swing.JFrame {
         ftConta.setText("");
     }//GEN-LAST:event_btTransferirActionPerformed
 
+    private void ftValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftValorKeyTyped
+        char letra = evt.getKeyChar();
+        
+        if (!Character.isDigit(letra)) {
+            evt.consume();
+            java.awt.Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_ftValorKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btTransferir;
     private javax.swing.JButton btVoltar;
     private javax.swing.JFormattedTextField ftConta;
     private javax.swing.JFormattedTextField ftValor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbSaldo;
+    private javax.swing.JLabel lbUsuario;
+    private javax.swing.JPanel painelCentral;
     // End of variables declaration//GEN-END:variables
 }

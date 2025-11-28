@@ -39,7 +39,7 @@ public final class DepositoVisao extends javax.swing.JFrame {
         initComponents();        
         this.conta = contaRecebida;
         preencherDados();
-        
+        propriedades();
     }
 
     private void propriedades(){
@@ -65,7 +65,6 @@ public final class DepositoVisao extends javax.swing.JFrame {
         ftValorDeposito = new javax.swing.JFormattedTextField();
         btDepositar = new javax.swing.JButton();
         btVoltar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("DEPÓSITO");
@@ -91,7 +90,7 @@ public final class DepositoVisao extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("INFORME O VALOR DO");
+        jLabel2.setText("INFORME O VALOR DO DEPÓSITO:");
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 40));
 
         ftValorDeposito.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
@@ -99,6 +98,11 @@ public final class DepositoVisao extends javax.swing.JFrame {
         ftValorDeposito.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 ftValorDepositoFocusGained(evt);
+            }
+        });
+        ftValorDeposito.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ftValorDepositoKeyTyped(evt);
             }
         });
 
@@ -118,13 +122,6 @@ public final class DepositoVisao extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("DEPÓSITO:");
-        jLabel3.setPreferredSize(new java.awt.Dimension(200, 40));
-
         javax.swing.GroupLayout painelCentralLayout = new javax.swing.GroupLayout(painelCentral);
         painelCentral.setLayout(painelCentralLayout);
         painelCentralLayout.setHorizontalGroup(
@@ -139,9 +136,8 @@ public final class DepositoVisao extends javax.swing.JFrame {
                     .addComponent(lbSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(ftValorDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         painelCentralLayout.setVerticalGroup(
             painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,17 +146,15 @@ public final class DepositoVisao extends javax.swing.JFrame {
                 .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(lbSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(painelCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btDepositar)
                     .addComponent(btVoltar))
-                .addGap(22, 22, 22))
+                .addGap(96, 96, 96))
         );
 
         getContentPane().add(painelCentral, java.awt.BorderLayout.CENTER);
@@ -209,13 +203,21 @@ public final class DepositoVisao extends javax.swing.JFrame {
         ftValorDeposito.setText("");
     }//GEN-LAST:event_ftValorDepositoFocusGained
 
+    private void ftValorDepositoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftValorDepositoKeyTyped
+        char letra = evt.getKeyChar();
+        
+        if (!Character.isDigit(letra)) {
+            evt.consume();
+            java.awt.Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_ftValorDepositoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDepositar;
     private javax.swing.JButton btVoltar;
     private javax.swing.JFormattedTextField ftValorDeposito;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbSaldo;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPanel painelCentral;
