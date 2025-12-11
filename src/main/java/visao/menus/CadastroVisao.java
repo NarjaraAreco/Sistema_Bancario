@@ -311,11 +311,6 @@ public class CadastroVisao extends javax.swing.JFrame {
         cbUF.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha...", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbUF.setPreferredSize(new java.awt.Dimension(200, 40));
-        cbUF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbUFActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setText("CIDADE:");
@@ -640,10 +635,6 @@ public class CadastroVisao extends javax.swing.JFrame {
             }    
         }
     }//GEN-LAST:event_btAvancarActionPerformed
-
-    private void cbUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbUFActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         int confirm;

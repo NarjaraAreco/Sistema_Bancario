@@ -38,15 +38,12 @@ public class ContaPers {
                 conta.setEmail(rs.getString("email"));
                 
                 conta.setSaldo(rs.getDouble("saldo"));
-                conta.setEmail(rs.getString("email")); 
                 conta.setTipoConta(rs.getString("tipo_conta"));
 
                 conta.setCep(rs.getString("cep"));
                 conta.setRua(rs.getString("rua"));
                 conta.setNumeroCasa(rs.getString("numero"));
                 conta.setComplemento(rs.getString("complemento"));
-                conta.setCidade(rs.getString("cidade"));
-                conta.setEstado(rs.getString("estado"));
                 conta.setCidade(rs.getString("cidade"));
                 conta.setEstado(rs.getString("estado"));             
                 
@@ -92,16 +89,13 @@ public class ContaPers {
                 conta.setId(rs.getInt("id"));
                 conta.setTitular(rs.getString("titular"));
                 conta.setSaldo(rs.getDouble("saldo"));
-
-                conta.setId(rs.getInt("id"));
+                
                 conta.setCpf(rs.getString("cpf"));
                 conta.setNumeroConta(rs.getString("numero_conta"));
                 
                 conta.setTitular(rs.getString("titular"));
                 conta.setEmail(rs.getString("email"));
                 
-                conta.setSaldo(rs.getDouble("saldo"));
-                conta.setEmail(rs.getString("email")); 
                 conta.setTipoConta(rs.getString("tipo_conta"));
 
                 conta.setCep(rs.getString("cep"));
@@ -110,8 +104,7 @@ public class ContaPers {
                 conta.setComplemento(rs.getString("complemento"));
                 conta.setCidade(rs.getString("cidade"));
                 conta.setEstado(rs.getString("estado"));
-                conta.setCidade(rs.getString("cidade"));
-                conta.setBairro(rs.getString("bairro"));
+
              }
              bd.close();
              return conta;

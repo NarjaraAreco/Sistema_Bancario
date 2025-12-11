@@ -427,8 +427,10 @@ public class InicioLoginVisao extends javax.swing.JFrame {
             }
 
             java.text.NumberFormat nf = java.text.NumberFormat.getCurrencyInstance(new java.util.Locale("pt", "BR"));
-            String mensagemCheque = "Resumo do Cheque Especial:\n\n" +
-                      "Limite Total: " + nf.format(limiteMaximo) + "\n" +
+            String mensagemCheque = """
+                                    Resumo do Cheque Especial:
+                                    
+                                    Limite Total: """ + nf.format(limiteMaximo) + "\n" +
                       "Saldo em Conta: " + nf.format(saldoAtual) + "\n" +
                       "--------------------------------\n" +
                       "DISPONÍVEL PARA USO: " + nf.format(disponivel);

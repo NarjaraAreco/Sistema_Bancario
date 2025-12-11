@@ -218,7 +218,7 @@ public class LoginVisao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "USUARIO OU SENHA INCORRETOS!", "LOGIN INCORRETO", JOptionPane.INFORMATION_MESSAGE);
                 }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro no Login" + ex.getMessage() , "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage() , "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btLoginActionPerformed
 
@@ -231,7 +231,7 @@ public class LoginVisao extends javax.swing.JFrame {
        try {
             
             javax.swing.UIManager.put("Component.accentColor", java.awt.Color.decode("#0f62fe"));
-            // 1. Diz para o FlatLaf que queremos bordas bem redondas (Estilo Raven)
+            // bordas bem redondas (Estilo Raven)
             javax.swing.UIManager.put("Button.arc", 20);       // Botões redondos
             javax.swing.UIManager.put("Component.arc", 15);    // Campos de texto redondos
             javax.swing.UIManager.put("TextComponent.arc", 15);

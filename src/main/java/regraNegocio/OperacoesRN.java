@@ -209,7 +209,6 @@ public class OperacoesRN {
                 writer.newLine();
             }
 
-            // 3. Rodapé (Saldo Final)
             writer.write("----------------------------------------");
             writer.newLine();
             writer.write(String.format("SALDO ATUAL: R$ %.2f", conta.getSaldo()));

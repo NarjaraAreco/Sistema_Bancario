@@ -207,6 +207,7 @@ public class TransferenciaVisao extends javax.swing.JFrame {
 
                 if (resultado.equals("Sucesso")) {
                     JOptionPane.showMessageDialog(null, "TRANSFERENCIA REALIZADA COM SUCESSO!", "TRANSFERENCIA", JOptionPane.INFORMATION_MESSAGE);
+                    preencherDados();
                 } else {
                     JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL REALIZAR A TRANSFERENCIA, TENTE NOVAMENTE!" , "Não realizado", JOptionPane.ERROR_MESSAGE);
                 }

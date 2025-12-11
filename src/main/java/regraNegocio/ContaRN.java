@@ -31,7 +31,7 @@ public class ContaRN{
         String cpfSemMascara = cpf.replaceAll("[^0-9]", ""); //tira os traços do cpf
         if (cpfSemMascara.isEmpty() || senha.isEmpty()) { 
             return conta;
-        } //colocar se cpf é verdadeiro
+        } 
         
         if (guardaContas.containsKey(cpf)) {
             System.out.println("Recuperado do da memória!");
